@@ -1,3 +1,6 @@
+Express, KnexJS, Postgres
+
+
 ##Step##
 
 - create DB on Postgres.
