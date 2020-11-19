@@ -3,7 +3,8 @@ const isValid = require('../middleware/isValid');
 
 exports.getMovies = async (req, res) => {
   try {
-    const movies = await queries.getAll();
+    const { title, description } = req.query;
+    const movies = await queries.getAll({ title, description });
     res.status(200).json({
       success: true,
       data: movies,

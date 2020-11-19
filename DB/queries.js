@@ -1,8 +1,18 @@
 const knex = require('./knex');
 
 module.exports = {
-  getAll() {
-    return knex('movie');
+  getAll(query) {
+    const knexQuery = knex('movie');
+
+    if (query.title) {
+      knexQuery.where('title', 'like', `%${query.title}%`);
+    }
+
+    if (query.description) {
+      knexQuery.where('description', 'like', `%${query.description}%`);
+    }
+
+    return knexQuery;
   },
   getOne(id) {
     return knex('movie').where('id', id).first();
